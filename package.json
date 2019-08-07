@@ -1,0 +1,36 @@
+{
+  "name": "frige",
+  "version": "1.0.0",
+  "description": "A JavaScript-free components library",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx run-p build:**",
+    "build:html": "cp src/html/* dist/html",
+    "build:scss": "npx node-sass --recursive --output dist/css --output-style expanded src/scss",
+    "lint": "npx run-p lint:**",
+    "lint:html": "npx htmlhint src/html/**/*.html; exit 0",
+    "lint:scss": "npx stylelint src/scss/**/*.scss; exit 0",
+    "watch": "npx run-p watch:**",
+    "watch:html": "npx onchange -i 'src/html/**/*.html' -- npx run-s lint:html build:html",
+    "watch:scss": "npx onchange -i 'src/scss/**/*.scss' -- npx run-s lint:scss build:scss"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sw3dish/frige.git"
+  },
+  "author": "Colin Burr",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/sw3dish/frige/issues"
+  },
+  "homepage": "https://github.com/sw3dish/frige#readme",
+  "devDependencies": {
+    "htmlhint": "^0.11.0",
+    "node-sass": "^4.12.0",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^6.0.0",
+    "stylelint": "^10.1.0",
+    "stylelint-config-standard-scss": "^1.1.0",
+    "stylelint-scss": "^3.9.3"
+  }
+}
